@@ -63,8 +63,6 @@ logger = logging.getLogger(__name__)
 LLM_generate = OllamaGenerator(model=config.LLMNAME_GENERATE)
 LLM_router = OllamaGenerator(model=config.LLMNAME_ROUTE)
 LLM_embedd = OllamaDocumentEmbedder(model=config.LLMNAME_EMBEDDER)
-
-Pipe = None
 Context = prompt_caller.context_init(LLM_generate, st.session_state["user_info"])
 
 
@@ -85,7 +83,7 @@ def process_question(question: str, document_store) -> str:
         "prompt_builder_after_user_info": {"context": Context},
         "hallu_prompt": {"context": Context},
     }
-
+    Pipe = init_pipe.build_full_pipeline(user_info, document_store)
     result = run_pipe.run_single(Pipe, run_dict)
     chat_history["user"] = rewritten_question
     chat_history["assistant"] = result
@@ -138,7 +136,6 @@ def delete_vector_db(vector_db, document_store=None) -> None:
 
 
 def main() -> None:
-    global Pipe 
     st.subheader("📚 Adaptive Academics", divider="gray", anchor=False)
     col1, col2 = st.columns([1.5, 2])
 
@@ -166,9 +163,7 @@ def main() -> None:
                         file_upload, logger, LLM_embedd
                     )
                     st.session_state["file_upload"] = file_upload
-                    Pipe = init_pipe.build_full_pipeline(
-                        st.session_state["user_info"], st.session_state["vector_db"])
-                        
+
                     with pdfplumber.open(file_upload) as pdf:
                         st.session_state["pdf_pages"] = [
                             page.to_image().original for page in pdf.pages
