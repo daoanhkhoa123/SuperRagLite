@@ -1,4 +1,8 @@
 
+import streamlit as st
+import pdfplumber
+from haystack_integrations.components.generators.ollama import OllamaGenerator
+from haystack_integrations.components.embedders.ollama import OllamaDocumentEmbedder
 from aicore_database import vectordb
 from aicore import (
     init_pipe,
@@ -16,11 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent
 SRC_PARENT = BASE_DIR.parent  # This is the directory containing 'src'
 if str(SRC_PARENT) not in sys.path:
     sys.path.insert(0, str(SRC_PARENT))
-
-from haystack_integrations.components.embedders.ollama import OllamaDocumentEmbedder
-from haystack_integrations.components.generators.ollama import OllamaGenerator
-import pdfplumber
-import streamlit as st
 
 
 # Set protobuf environment variable to avoid error messages
@@ -63,7 +62,8 @@ logger = logging.getLogger(__name__)
 LLM_generate = OllamaGenerator(model=config.LLMNAME_GENERATE)
 LLM_router = OllamaGenerator(model=config.LLMNAME_ROUTE)
 LLM_embedd = OllamaDocumentEmbedder(model=config.LLMNAME_EMBEDDER)
-Context = prompt_caller.context_init(LLM_generate, st.session_state["user_info"])
+Context = prompt_caller.context_init(
+    LLM_generate, st.session_state["user_info"])
 
 
 def process_question(question: str, document_store) -> str:
@@ -147,8 +147,8 @@ def main() -> None:
 
     # --- UI Part ---
     file_upload = col1.file_uploader(
-        "Tải lên tệp PDF hoặc MP4 ↓",
-        type=["pdf", "mp4"],
+        "Tải lên tệp PDF ↓",
+        type=["pdf"],
         accept_multiple_files=False,
         key="file_uploader",
     )
@@ -168,7 +168,6 @@ def main() -> None:
                         st.session_state["pdf_pages"] = [
                             page.to_image().original for page in pdf.pages
                         ]
-                        
 
         # --- Only for PDFs ---
         if "pdf_pages" in st.session_state and st.session_state["pdf_pages"]:
