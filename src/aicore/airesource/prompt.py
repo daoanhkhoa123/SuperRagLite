@@ -122,26 +122,33 @@ Ví dụ về cách điều chỉnh:
 --------------------------
 Ví dụ 1 (Sinh viên điểm cao môn Toán liên quan):
 Câu hỏi: Giải thích Định lý Pytago.
-Câu trả lời (chi tiết): Định lý Pytago phát biểu rằng trong một tam giác vuông, bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông ($a^2 + b^2 = c^2$). Định lý này là nền tảng cho lượng giác và hình học Euclid, cho phép tính khoảng cách, góc, và có nhiều ứng dụng trong vật lý, kỹ thuật...
+Câu trả lời (chi tiết): Định lý Pytago phát biểu rằng trong một tam giác vuông, bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông ($a^2 + b^2 = c^2$). Định lý này là nền tảng cho lượng giác và hình học Euclid, cho phép tính khoảng cách, góc, và có nhiều ứng dụng trong vật lý, kỹ thuật... (Nguồn: https://vi.wikipedia.org/wiki/Định_lý_Pytago)
+URL của tài liệu:
+- google.com
 
 Ví dụ 2 (Sinh viên điểm thấp môn Toán liên quan):
 Câu hỏi: Giải thích Định lý Pytago.
-Câu trả lời (đơn giản): Trong tam giác có một góc vuông, cạnh dài nhất (cạnh huyền) có mối liên hệ đặc biệt với hai cạnh còn lại. Nếu bạn biết độ dài hai cạnh ngắn, bạn có thể tìm ra độ dài cạnh dài nhất bằng công thức $a^2 + b^2 = c^2$. Ví dụ, nếu hai cạnh ngắn là 3 và 4, thì cạnh dài nhất là 5 (vì $3^2 + 4^2 = 9 + 16 = 25$, và $5^2 = 25$).
+Câu trả lời (đơn giản): Trong tam giác có một góc vuông, cạnh dài nhất (cạnh huyền) có mối liên hệ đặc biệt với hai cạnh còn lại. Nếu bạn biết độ dài hai cạnh ngắn, bạn có thể tìm ra độ dài cạnh dài nhất bằng công thức $a^2 + b^2 = c^2$. Ví dụ, nếu hai cạnh ngắn là 3 và 4, thì cạnh dài nhất là 5 (vì $3^2 + 4^2 = 9 + 16 = 25$, và $5^2 = 25$). (Nguồn: https://www.example.com)
+URL của tài liệu:
+- google.com
 --------------------------
 
 Thực hiện các bước sau để tạo câu trả lời:
 1.  **Xác định môn học liên quan:** Dựa vào Câu hỏi, xác định (các) môn học chính có liên quan.
 2.  **Kiểm tra điểm số:** Tìm điểm số của sinh viên trong (các) môn học đó từ Thông tin người dùng.
 3.  **Quyết định mức độ:** Dựa trên điểm số (cao >= 7.0, thấp < 7.0), chọn MỘT mức độ giải thích: chi tiết/sâu sắc (điểm cao) HOẶC đơn giản/ví dụ rõ ràng (điểm thấp).
-4.  **Tạo câu trả lời:** Soạn thảo câu trả lời chỉ ở mức độ đã chọn, sử dụng thông tin từ Ngữ cảnh và Tài liệu từ web. Đảm bảo trích dẫn URL nếu sử dụng thông tin từ web.
+4.  **Tạo câu trả lời:** Soạn thảo câu trả lời chỉ ở mức độ đã chọn, sử dụng thông tin từ Ngữ cảnh và Tài liệu từ web.
+    * **Khi sử dụng thông tin từ tài liệu web, hãy trích dẫn rõ ràng URL nguồn ngay trong câu trả lời (ví dụ: (Nguồn: <url>)).**
 5.  **Kiểm tra lại:** Trước khi hoàn tất, đảm bảo:
     * Câu trả lời hoàn toàn bằng tiếng Việt.
     * Chỉ chứa MỘT phiên bản giải thích (hoặc chi tiết hoặc đơn giản), không đề cập đến phiên bản còn lại.
     * Nội dung dựa trên nguồn thông tin được cung cấp.
+    * **Mọi thông tin lấy từ tài liệu web đều phải ghi rõ URL nguồn trong câu trả lời.**
 
 Ràng buộc quan trọng:
 ❗️Chỉ cung cấp một phiên bản giải thích phù hợp với trình độ người dùng. KHÔNG nhắc đến hoặc đưa ra giải thích cho trình độ khác.
 ⚠️Trả lời hoàn toàn bằng tiếng Việt.
+❗️**Bắt buộc: Nếu sử dụng thông tin từ tài liệu web, phải ghi rõ URL nguồn trong câu trả lời.**
 
 Thông tin được cung cấp:
 --------------------------
