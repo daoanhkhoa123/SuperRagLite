@@ -73,7 +73,6 @@ def process_question(question: str, document_store) -> str:
     user_info = st.session_state.get("user_info", {})
 
     # Standard question processing
-    _pipe = init_pipe.setup_pipeline_with_document_store(Pipe, document_store)
     rewritten_question = prompt_caller.rewrite_query(
         LLM_generate, question, Context)
     run_dict = {
@@ -87,7 +86,7 @@ def process_question(question: str, document_store) -> str:
         "hallu_prompt": {"context": Context},
     }
 
-    result = run_pipe.run_single(_pipe, run_dict)
+    result = run_pipe.run_single(Pipe, run_dict)
     chat_history["user"] = rewritten_question
     chat_history["assistant"] = result
     Context = prompt_caller.context_combine(
