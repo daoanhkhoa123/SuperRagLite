@@ -1,6 +1,5 @@
 
 from aicore_database import vectordb
-from aicore.airesource import ultils as aiultils
 from aicore import (
     init_pipe,
     run_pipe,

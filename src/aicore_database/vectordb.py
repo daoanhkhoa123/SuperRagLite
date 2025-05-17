@@ -7,12 +7,6 @@ import fitz  # PyMuPDF
 from haystack.dataclasses import Document as HaystackDocument
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.documents import Document as LangChainDocument
-
-# Only needed for video processing
-from moviepy.editor import VideoFileClip
-from transformers import pipeline
-
 
 def create_vector_db(file_upload, logger, doc_embedder):
     """

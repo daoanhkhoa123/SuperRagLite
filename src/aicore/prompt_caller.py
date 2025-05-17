@@ -1,4 +1,4 @@
-from aicore.airesource.prompt import translate_summarize_prompt, prompt_context_init, prompt_context_combine, propmt_chathist_summarize, prompt_rewritequery
+from aicore.airesource.prompt import prompt_context_init, prompt_context_combine, propmt_chathist_summarize, prompt_rewritequery
 
 def context_init(model) -> str:
     return model.run(prompt_context_init)["replies"][0]
