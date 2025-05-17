@@ -9,7 +9,6 @@ import aicore.airesource.config as config
 import os
 import sys
 import logging
-import tempfile
 from pathlib import Path
 from typing import List, Any
 
@@ -65,8 +64,8 @@ LLM_generate = OllamaGenerator(model=config.LLMNAME_GENERATE)
 LLM_router = OllamaGenerator(model=config.LLMNAME_ROUTE)
 LLM_embedd = OllamaDocumentEmbedder(model=config.LLMNAME_EMBEDDER)
 
-Pipe = init_pipe.init_pipeline(st.session_state["user_info"])
-Context = prompt_caller.context_init(LLM_generate)
+Pipe = None
+Context = prompt_caller.context_init(LLM_generate, st.session_state["user_info"])
 
 
 def process_question(question: str, document_store) -> str:
@@ -140,6 +139,7 @@ def delete_vector_db(vector_db, document_store=None) -> None:
 
 
 def main() -> None:
+    global Pipe 
     st.subheader("📚 Adaptive Academics", divider="gray", anchor=False)
     col1, col2 = st.columns([1.5, 2])
 
@@ -167,10 +167,14 @@ def main() -> None:
                         file_upload, logger, LLM_embedd
                     )
                     st.session_state["file_upload"] = file_upload
+                    Pipe = init_pipe.build_full_pipeline(
+                        st.session_state["user_info"], st.session_state["vector_db"])
+                        
                     with pdfplumber.open(file_upload) as pdf:
                         st.session_state["pdf_pages"] = [
                             page.to_image().original for page in pdf.pages
                         ]
+                        
 
         # --- Only for PDFs ---
         if "pdf_pages" in st.session_state and st.session_state["pdf_pages"]:

@@ -1,7 +1,7 @@
 from aicore.airesource.prompt import prompt_context_init, prompt_context_combine, propmt_chathist_summarize, prompt_rewritequery
 
-def context_init(model) -> str:
-    return model.run(prompt_context_init)["replies"][0]
+def context_init(model, user_dict) -> str:
+    return model.run(prompt_context_init.format(user_info=user_dict))["replies"][0]
 
 
 def context_combine(model, curr, chat_hist, user_info) -> str:
