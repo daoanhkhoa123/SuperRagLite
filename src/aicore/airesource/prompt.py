@@ -65,11 +65,11 @@ Bây giờ, hãy đánh giá hiệu suất của học sinh cho từng môn họ
 prompt_template = r"""
 BẠN LÀ BỘ LỌC THÔNG TIN. Chỉ kiểm tra xem thông tin cần thiết để trả lời câu hỏi có tồn tại trong tài liệu được cung cấp hay không, hoặc có cần thông tin từ người dùng không.
 
-1. Nếu tài liệu chứa đủ thông tin để trả lời câu hỏi: Phản hồi chính xác là 'co_cau_tra_loi'.
-2. Nếu tài liệu không đủ nhưng câu hỏi rõ ràng yêu cầu thông tin cá nhân/điểm số của người dùng để có thể trả lời: Phản hồi chính xác là 'yeu_cau_thong_tin_nguoi_dung'.
-3. Nếu tài liệu không chứa thông tin và cũng không cần thông tin người dùng để trả lời câu hỏi này: Phản hồi chính xác là 'khong_co_cau_tra_loi'.
+1. Nếu tài liệu chứa đủ thông tin để trả lời câu hỏi: Phản hồi chính xác là 'yes_answer'.
+2. Nếu tài liệu không đủ nhưng câu hỏi rõ ràng yêu cầu thông tin cá nhân/điểm số của người dùng để có thể trả lời: Phản hồi chính xác là 'user_info_requested'.
+3. Nếu tài liệu không chứa thông tin và cũng không cần thông tin người dùng để trả lời câu hỏi này: Phản hồi chính xác là 'no_answer'.
 
-⚠️ Chỉ phản hồi bằng MỘT trong ba cụm từ tiếng Việt trên, không thêm bất kỳ giải thích nào khác.
+⚠️ Chỉ phản hồi bằng MỘT trong ba cụm từ trên, không thêm bất kỳ giải thích nào khác.
 
 Tài liệu:
 {% for document in documents %}
@@ -86,10 +86,10 @@ propmt_hallu_grader = r"""
 Bạn là một chuyên gia đánh giá độ tin cậy của câu trả lời từ LLM.
 Nhiệm vụ: Kiểm tra xem câu trả lời của LLM có hoàn toàn dựa trên Tài liệu và Thông tin người dùng được cung cấp hay không.
 Đánh giá nhị phân:
-- 'co_ho_tro': Nếu câu trả lời được hỗ trợ đầy đủ bởi Tài liệu và Thông tin người dùng.
-- 'khong_ho_tro': Nếu câu trả lời chứa thông tin không có trong Tài liệu/Thông tin người dùng, hoặc mâu thuẫn với chúng.
+- 'yes_answer': Nếu câu trả lời được hỗ trợ đầy đủ bởi Tài liệu và Thông tin người dùng.
+- 'no_answer': Nếu câu trả lời chứa thông tin không có trong Tài liệu/Thông tin người dùng, hoặc mâu thuẫn với chúng.
 
-⚠️ Chỉ đưa ra MỘT trong hai kết quả đánh giá tiếng Việt trên.
+⚠️ Chỉ đưa ra MỘT trong hai kết quả đánh giá trên.
 
 Thông tin người dùng:
 {{user_info}}
@@ -105,7 +105,7 @@ Tài liệu:
 Phản hồi của LLM:
 {{llm_replies}}
 
-Đánh giá (co_ho_tro/khong_ho_tro):
+Đánh giá (yes_answer/no_answer):
 """
 
 # ==============================================================
